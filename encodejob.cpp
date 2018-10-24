@@ -25,7 +25,9 @@ void EncodeJob::run()
 
     lame_set_num_channels(gfp.get(), wave_file.channels());
     lame_set_in_samplerate(gfp.get(), wave_file.sample_rate());
-    lame_set_brate(gfp.get(), 192);
+    lame_set_VBR(gfp.get(), vbr_mtrh);
+    lame_set_VBR_q(gfp.get(), 2);
+    lame_set_bWriteVbrTag(gfp.get(), 1);
     lame_set_quality(gfp.get(), 1);
 
     if(lame_init_params(gfp.get()) < 0)
