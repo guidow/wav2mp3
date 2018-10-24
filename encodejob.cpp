@@ -33,7 +33,7 @@ void EncodeJob::run()
     if(lame_init_params(gfp.get()) < 0)
         std::runtime_error("Error on initializing lame parameters");
 
-    std::ofstream out_file(m_out_path, std::ios::out | std::ios::trunc);
+    std::ofstream out_file(m_out_path, std::ios::out | std::ios::trunc | std::ios::binary);
 
     while(!wave_file.end_of_data()){
         auto in_buffer = wave_file.read_samples(1024);
