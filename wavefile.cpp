@@ -60,7 +60,7 @@ std::vector<char> WaveFile::read_samples(std::size_t num_samples)
     m_file.read(&out[0], bytes_to_read);
 
     // Resize the array in case fewer bytes than expected were read
-    std::size_t bytes_read = m_file.gcount();
+    std::streamsize bytes_read = m_file.gcount();
     out.resize(bytes_read);
     m_remaining_data_bytes -= bytes_read;
 
