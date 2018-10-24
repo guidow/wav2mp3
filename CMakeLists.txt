@@ -18,6 +18,6 @@ include_directories(${LAME_INCLUDE_DIRS})
 
 add_executable(wav2mp3 main.cpp wavefile.cpp jobqueue.cpp encodejob.cpp)
 
-target_link_libraries(wav2mp3 ${LAME_LIBRARIES} stdc++fs)
+target_link_libraries(wav2mp3 ${LAME_LIBRARIES} Threads::Threads stdc++fs)
 
 install(TARGETS wav2mp3 RUNTIME DESTINATION bin)
