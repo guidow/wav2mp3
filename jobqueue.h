@@ -16,6 +16,8 @@ class JobQueue
     JobQueue(const fs::path& dir);
     ~JobQueue();
 
+    // Returns a pointer to an EncodeJob or nullptr if no work is left
+    // Ownership of the pointer is with the caller
     EncodeJob* get_job();
 
     private:

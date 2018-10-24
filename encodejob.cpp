@@ -35,7 +35,7 @@ void EncodeJob::run()
 
     std::ofstream out_file(m_out_path, std::ios::out | std::ios::trunc | std::ios::binary);
 
-    while(!wave_file.end_of_data()){
+    while(!wave_file.end_of_data()) {
         auto in_buffer = wave_file.read_samples(1024);
 
         std::vector<unsigned char> out_buffer(7200 * 2);
@@ -46,7 +46,7 @@ void EncodeJob::run()
                                                        in_buffer.size() / wave_file.block_alignment(),
                                                        &out_buffer[0],
                                                        out_buffer.size());
-        else
+        else // Using the interleaved encoding function for mono input results in distorted sound in the output
             out_bytes = lame_encode_buffer(gfp.get(),
                                            (short*)(&in_buffer[0]), (short*)(&in_buffer[0]), // For mono, use the same data for left and right channel
                                            in_buffer.size() / wave_file.block_alignment(),

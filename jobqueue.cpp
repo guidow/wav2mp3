@@ -26,6 +26,7 @@ EncodeJob* JobQueue::get_job()
     {
     if(pthread_mutex_lock(&m_mutex) != 0)
         throw std::runtime_error("Could not lock mutex");
+    // Jury-rigged lock guard
     std::unique_ptr<pthread_mutex_t, int(*)(pthread_mutex_t*)> lock_guard(&m_mutex, pthread_mutex_unlock);
 
     if(m_waiting_files.empty())
