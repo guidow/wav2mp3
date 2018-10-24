@@ -11,6 +11,7 @@
 
 void EncodeJob::run()
     {
+    std::cout << "Working on encoding " << m_in_path << " to " << m_out_path << std::endl;
     WaveFile wave_file(m_in_path);
 
     if(wave_file.bits_per_sample() != 16)
