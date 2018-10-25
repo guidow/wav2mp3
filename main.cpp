@@ -36,6 +36,8 @@ int main(int argc, char **argv)
     JobQueue job_queue(argv[1]);
 
     const unsigned int num_cores = std::thread::hardware_concurrency();
+	std::cout << "Using " << num_cores << " threads" << std::endl;
+
     std::vector<pthread_t> threads;
     for(unsigned int i = 0 ; i < num_cores ; ++i) {
         threads.push_back(pthread_t{});
