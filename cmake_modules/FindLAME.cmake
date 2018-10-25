@@ -6,12 +6,10 @@
 #  LAME_FOUND        - True if lame found.
 
 # Look for the header file.
-find_path(LAME_INCLUDE_DIR NAMES lame/lame.h)
-#mark_as_advanced(LAME_INCLUDE_DIR)
+find_path(LAME_INCLUDE_DIR NAMES lame.h PATH_SUFFIXES lame)
 
 # Look for the library.
-find_library(LAME_LIBRARY NAMES libmp3lame.a mp3lame)
-#mark_as_advanced(LAME_LIBRARY)
+find_library(LAME_LIBRARY NAMES libmp3lame.a libmp3lame-static.lib mp3lame PATH_SUFFIXES output)
 
 # handle the QUIETLY and REQUIRED arguments and set LAME_FOUND to TRUE if
 # all listed variables are TRUE
