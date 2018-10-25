@@ -2,6 +2,7 @@
 
 #include <stdexcept>
 #include <memory>
+#include <iostream>
 
 namespace fs = std::experimental::filesystem;
 
@@ -36,5 +37,6 @@ EncodeJob* JobQueue::get_job()
     auto out_filename = filename.stem();
     out_filename += ".mp3";
     m_waiting_files.pop();
+    std::cout << "Working on encoding " << filename << " to " << m_dir / out_filename << std::endl;
     return new EncodeJob(filename, m_dir / out_filename);
     }
