@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     const unsigned int num_cores = std::thread::hardware_concurrency();
     std::vector<pthread_t> threads;
     for(unsigned int i = 0 ; i < num_cores ; ++i) {
-        threads.push_back(i);
+        threads.push_back(pthread_t{});
         if(pthread_create(&threads[i], nullptr, encoder_thread, &job_queue) != 0)
             throw std::runtime_error("Could not start thread");
         }
