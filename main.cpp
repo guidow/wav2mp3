@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <thread>
+#include <stdexcept>
 
 #include <pthread.h>
 
